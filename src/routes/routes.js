@@ -6,6 +6,7 @@ import Jobs from "../pages/Jobs";
 import Login from "../pages/Login";
 import AccountCreator from "../pages/register/AccountCreator";
 import Signup from "../pages/Signup";
+import PrivateRoute from "../utils/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -34,11 +35,19 @@ const routes = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <AccountCreator />,
+        element: (
+          <PrivateRoute>
+            <AccountCreator />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register/:type",
-        element: <AccountCreator />,
+        element: (
+          <PrivateRoute>
+            <AccountCreator />
+          </PrivateRoute>
+        ),
       },
     ],
   },
