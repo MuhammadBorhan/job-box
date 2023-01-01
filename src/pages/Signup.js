@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import loginImage from "../../assets/login.svg";
+import loginImage from "../assets/login.svg";
 
 const Signup = () => {
   const { handleSubmit, register, reset, control } = useForm();

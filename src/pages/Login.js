@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import loginImage from "../../assets/login.svg";
+import loginImage from "../assets/login.svg";
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
