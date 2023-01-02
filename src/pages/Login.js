@@ -2,8 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import loginImage from "../assets/login.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../features/auth/authSlice";
+import { googleLogin, loginUser } from "../features/auth/authSlice";
 import { useEffect } from "react";
+import { FaGoogle, FaGooglePlusG } from "react-icons/fa";
+
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
@@ -65,6 +67,14 @@ const Login = () => {
                   </span>
                 </p>
               </div>
+              <button
+                onClick={() => dispatch(googleLogin())}
+                type="button"
+                className="font-bold flex items-center gap-2 justify-center text-white py-3 rounded-full bg-indigo-600 w-full"
+              >
+                Login With Google
+                <FaGoogle className="text-yellow-300" />
+              </button>
             </div>
           </form>
         </div>
