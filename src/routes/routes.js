@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../layout/Main/Dashboard/Dashboard";
 import Main from "../layout/Main/Main";
 import Home from "../pages/Home/Home";
 import JobDetails from "../pages/JobDetails";
@@ -50,6 +51,10 @@ const routes = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 

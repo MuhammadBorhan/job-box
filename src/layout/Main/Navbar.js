@@ -46,6 +46,16 @@ const Navbar = () => {
             </Link>
           </li>
         )}
+        {email && (
+          <li>
+            <Link
+              className="text-indigo-500 font-bold px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 hover:px-4 transition-all "
+              to="/dashboard"
+            >
+              Dashboard
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
