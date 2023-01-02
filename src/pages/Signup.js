@@ -29,6 +29,7 @@ const Signup = () => {
 
   const onSubmit = (data) => {
     dispatch(createUser({ email: data.email, password: data.password }));
+    reset();
   };
   return (
     <div className="flex h-screen items-center pt-14">
