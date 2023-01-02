@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
-import { createUser } from "../features/auth/authSlice";
+import { createUser, googleLogin } from "../features/auth/authSlice";
 
 const Signup = () => {
   const { handleSubmit, register, reset, control } = useForm();
@@ -12,6 +14,21 @@ const Signup = () => {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
+  const { email, isLoading, isError, error } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (!isLoading && email) {
+      navigate("/");
+    }
+  }, [isLoading, email]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error);
+    }
+  }, [isError, error]);
 
   useEffect(() => {
     if (
@@ -94,6 +111,14 @@ const Signup = () => {
                   </span>
                 </p>
               </div>
+              <button
+                onClick={() => dispatch(googleLogin())}
+                type="button"
+                className="font-bold flex items-center gap-2 justify-center text-white py-3 rounded-full bg-indigo-600 w-full"
+              >
+                Signin With Google
+                <FaGoogle className="text-yellow-300" />
+              </button>
             </div>
           </form>
         </div>

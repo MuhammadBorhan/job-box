@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { googleLogin, loginUser } from "../features/auth/authSlice";
 import { useEffect } from "react";
 import { FaGoogle, FaGooglePlusG } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { email, isLoading } = useSelector((state) => state.auth);
+  const { email, isLoading, isError, error } = useSelector(
+    (state) => state.auth
+  );
 
   const onSubmit = (data) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
@@ -22,6 +25,12 @@ const Login = () => {
       navigate("/");
     }
   }, [isLoading, email]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(error);
+    }
+  }, [isError, error]);
   return (
     <div className="flex h-screen items-center">
       <div className="w-1/2">
