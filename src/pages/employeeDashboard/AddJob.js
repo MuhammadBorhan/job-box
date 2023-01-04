@@ -1,9 +1,17 @@
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { FiTrash } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { usePostJobMutation } from "../../features/job/jobApi";
 
 const AddJob = () => {
-  const { handleSubmit, register, control } = useForm();
+  const { companyName } = useSelector((state) => state.auth.user);
+  const [postJob, { isLoading, isError }] = usePostJobMutation();
+  const { handleSubmit, register, control } = useForm({
+    defaultValues: {
+      companyName,
+    },
+  });
   const {
     fields: resFields,
     append: resAppend,
@@ -22,6 +30,7 @@ const AddJob = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    postJob(data);
   };
   return (
     <div className="flex justify-center items-center overflow-auto p-10">
@@ -121,7 +130,7 @@ const AddJob = () => {
               <button
                 type="button"
                 onClick={() => skillAppend("")}
-                className="btn"
+                className="btn border border-purple-600 px-2 py-1 rounded-full"
               >
                 Add Skill
               </button>
@@ -158,7 +167,7 @@ const AddJob = () => {
               <button
                 type="button"
                 onClick={() => resAppend("")}
-                className="btn"
+                className="btn border border-purple-600 px-2 py-1 rounded-full"
               >
                 Add Responsibility
               </button>
@@ -195,7 +204,7 @@ const AddJob = () => {
               <button
                 type="button"
                 onClick={() => reqAppend("")}
-                className="btn"
+                className="btn border border-purple-600 px-2 py-1 rounded-full"
               >
                 Add Requirement
               </button>
