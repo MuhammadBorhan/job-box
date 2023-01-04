@@ -18,6 +18,7 @@ const Login = () => {
   const onSubmit = (data) => {
     dispatch(loginUser({ email: data.email, password: data.password }));
     reset();
+    navigate("/register");
   };
 
   useEffect(() => {
