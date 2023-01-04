@@ -10,7 +10,7 @@ const EmployerRegistration = () => {
   const [postUser, { isLoading, isError }] = useRegisterMutation();
   const { email } = useSelector((state) => state.auth);
 
-  const { handleSubmit, register, control } = useForm();
+  const { handleSubmit, register, control, reset } = useForm();
   const term = useWatch({ control, name: "term" });
   const navigate = useNavigate();
 
@@ -46,6 +46,7 @@ const EmployerRegistration = () => {
   const onSubmit = (data) => {
     console.log(data);
     postUser({ ...data, role: "employer" });
+    reset();
   };
   return (
     <div className="pt-14">
@@ -171,7 +172,11 @@ const EmployerRegistration = () => {
               />
               <label for="terms">I agree to terms and conditions</label>
             </div>
-            <button disabled={!term} className="btn" type="submit">
+            <button
+              disabled={!term}
+              className="btn border border-b-sky-500 px-2 py-1 bg-slate-500 text-white"
+              type="submit"
+            >
               Submit
             </button>
           </div>
