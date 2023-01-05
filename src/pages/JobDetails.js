@@ -17,7 +17,9 @@ const JobDetails = () => {
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
   const { id } = useParams();
-  const { data, isLoading, isError } = useGetJobByIdQuery(id);
+  const { data, isLoading, isError } = useGetJobByIdQuery(id, {
+    pollingInterval: 1000,
+  });
   const navigate = useNavigate();
   const {
     queries,
