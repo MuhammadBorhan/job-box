@@ -2,16 +2,18 @@ import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { usePostJobMutation } from "../../features/job/jobApi";
 
 const AddJob = () => {
   const { companyName } = useSelector((state) => state.auth.user);
   const [postJob, { isLoading, isError }] = usePostJobMutation();
-  const { handleSubmit, register, control } = useForm({
+  const { handleSubmit, register, control, reset } = useForm({
     defaultValues: {
       companyName,
     },
   });
+  const navigate = useNavigate();
   const {
     fields: resFields,
     append: resAppend,
@@ -29,8 +31,9 @@ const AddJob = () => {
   } = useFieldArray({ control, name: "requirements" });
 
   const onSubmit = (data) => {
-    console.log(data);
-    postJob(data);
+    postJob({ ...data, applicants: [], queries: [] });
+    reset();
+    // navigate("/jobs");
   };
   return (
     <div className="flex justify-center items-center overflow-auto p-10">

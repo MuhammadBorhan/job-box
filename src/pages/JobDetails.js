@@ -1,14 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useGetJobByIdQuery } from "../features/job/jobApi";
+import { useNavigate, useParams } from "react-router-dom";
+import { useApplyMutation, useGetJobByIdQuery } from "../features/job/jobApi";
 import borhan from "../assets/hero-01.jpg";
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
 const JobDetails = () => {
+  const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
-  const { data } = useGetJobByIdQuery(id);
-  console.log(data);
+  const { data, isLoading, isError } = useGetJobByIdQuery(id);
+  const navigate = useNavigate();
   const {
+    queries,
     position,
     overview,
     skills,
@@ -23,6 +27,26 @@ const JobDetails = () => {
     location,
   } = data?.data || {};
 
+  const [apply] = useApplyMutation();
+
+  const handleApply = () => {
+    const data = {
+      userId: user._id,
+      email: user.email,
+      jobId: _id,
+    };
+    apply(data);
+
+    if (user.role === "employer") {
+      toast.error("You need a candidate account to apply");
+      return;
+    }
+    if (user.role === "") {
+      navigate("/register");
+      return;
+    }
+  };
+
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
       <div className="col-span-9 mb-10">
@@ -34,7 +58,10 @@ const JobDetails = () => {
             <h1 className="text-xl font-semibold text-purple-700">
               {position}
             </h1>
-            <button className="btn px-2 py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2">
+            <button
+              onClick={handleApply}
+              className="btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2"
+            >
               Apply
             </button>
           </div>
@@ -85,8 +112,8 @@ const JobDetails = () => {
             <h1 className="text-xl font-semibold text-purple-700  mb-5">
               General Q&A
             </h1>
-            {/* <div className="text-primary my-2">
-              {queries.map(({ question, email, reply, id }) => (
+            <div className="text-primary my-2">
+              {queries?.map(({ question, email, reply, id }) => (
                 <div>
                   <small>{email}</small>
                   <p className="text-lg font-medium">{question}</p>
@@ -107,7 +134,7 @@ const JobDetails = () => {
                   </div>
                 </div>
               ))}
-            </div> */}
+            </div>
 
             <div className="flex gap-3 my-5">
               <input
