@@ -29,7 +29,7 @@ const Navbar = () => {
           <Link to="/">JobBox</Link>
         </li>
         <li>
-          <Link className="hover:text-primary" to="/jobs">
+          <Link className="hover:text-purple-700 font-black" to="/jobs">
             Jobs
           </Link>
         </li>

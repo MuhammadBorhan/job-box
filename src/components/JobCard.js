@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const JobCard = ({ jobData }) => {
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ const JobCard = ({ jobData }) => {
         <p>{employmentType}</p>
         <button
           className="btn bg-purple-700 px-3 py-1 rounded-full text-white font-bold"
-          onClick={() => navigate(`/job-details/${_id}`)}
+          //   onClick={() => navigate(`/job-details/${_id}`)}
         >
-          Details
+          <Link to={`/job-details/${_id}`}>Details</Link>
         </button>
       </div>
     </div>
