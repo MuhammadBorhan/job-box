@@ -45,6 +45,7 @@ const JobDetails = () => {
       navigate("/register");
       return;
     }
+    toast.success("Apply Succefully done...");
   };
 
   return (

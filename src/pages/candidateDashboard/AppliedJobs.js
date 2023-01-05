@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import JobCard from "../../components/reusable/JobCard";
-import Loading from "../../components/reusable/Loading";
+import Loading from "../../components/Loading";
+import JobCard from "../../components/JobCard";
 import { useGetAppliedJobsQuery } from "../../features/job/jobApi";
 
 const AppliedJobs = () => {
@@ -13,8 +13,8 @@ const AppliedJobs = () => {
     return <Loading />;
   }
   return (
-    <div>
-      <h1 className="text-xl py-5">Applied jobs</h1>
+    <div className="pl-5">
+      <h1 className="text-xl py-5 text-purple-700 font-bold">Applied jobs</h1>
       <div className="grid grid-cols-2 gap-5 pb-5">
         {data?.data?.map((job) => (
           <JobCard jobData={job} />

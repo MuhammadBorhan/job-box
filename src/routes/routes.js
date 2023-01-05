@@ -11,6 +11,7 @@ import Login from "../pages/Login";
 import AccountCreator from "../pages/register/AccountCreator";
 import Signup from "../pages/Signup";
 import PrivateRoute from "../utils/PrivateRoute";
+import AppliedJobs from "../pages/candidateDashboard/AppliedJobs";
 
 const routes = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const routes = createBrowserRouter([
       {
         path: "add-job",
         element: <AddJob />,
+      },
+      {
+        path: "applied-jobs",
+        element: <AppliedJobs />,
       },
       {
         path: "employer",
