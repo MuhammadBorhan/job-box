@@ -26,20 +26,26 @@ const JobDetails = () => {
   return (
     <div className="pt-14 grid grid-cols-12 gap-5">
       <div className="col-span-9 mb-10">
-        <div className="h-80 rounded-xl overflow-hidden">
-          <img className="h-full w-full object-cover" src={borhan} alt="" />
+        <div className="h-96 rounded-xl overflow-hidden">
+          <img className=" w-full object-cover" src={borhan} alt="" />
         </div>
         <div className="space-y-5">
           <div className="flex justify-between items-center mt-5">
-            <h1 className="text-xl font-semibold text-primary">{position}</h1>
-            <button className="btn">Apply</button>
+            <h1 className="text-xl font-semibold text-purple-700">
+              {position}
+            </h1>
+            <button className="btn px-2 py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2">
+              Apply
+            </button>
           </div>
           <div>
-            <h1 className="text-primary text-lg font-medium mb-3">Overview</h1>
+            <h1 className="text-purple-700 text-lg font-medium mb-3">
+              Overview
+            </h1>
             <p>{overview}</p>
           </div>
           <div>
-            <h1 className="text-primary text-lg font-medium mb-3">Skills</h1>
+            <h1 className="text-purple-700 text-lg font-medium mb-3">Skills</h1>
             <ul>
               {skills?.map((skill) => (
                 <li className="flex items-center">
@@ -49,7 +55,7 @@ const JobDetails = () => {
             </ul>
           </div>
           <div>
-            <h1 className="text-primary text-lg font-medium mb-3">
+            <h1 className="text-purple-700  text-lg font-medium mb-3">
               Requirements
             </h1>
             <ul>
@@ -61,7 +67,7 @@ const JobDetails = () => {
             </ul>
           </div>
           <div>
-            <h1 className="text-primary text-lg font-medium mb-3">
+            <h1 className="text-purple-700  text-lg font-medium mb-3">
               Responsibilities
             </h1>
             <ul>
@@ -76,7 +82,7 @@ const JobDetails = () => {
         <hr className="my-5" />
         <div>
           <div>
-            <h1 className="text-xl font-semibold text-primary mb-5">
+            <h1 className="text-xl font-semibold text-purple-700  mb-5">
               General Q&A
             </h1>
             {/* <div className="text-primary my-2">
@@ -110,7 +116,7 @@ const JobDetails = () => {
                 className="w-full"
               />
               <button
-                className="shrink-0 h-14 w-14 bg-primary/10 border border-primary hover:bg-primary rounded-full transition-all  grid place-items-center text-primary hover:text-white"
+                className="shrink-0 h-14 w-14 bg-purple-700/10 border border-purple-700 hover:bg-purple-700 rounded-full transition-all  grid place-items-center text-purple-700  hover:text-white"
                 type="button"
               >
                 <BsArrowRightShort size={30} />
@@ -120,7 +126,7 @@ const JobDetails = () => {
         </div>
       </div>
       <div className="col-span-3">
-        <div className="rounded-xl bg-primary/10 p-5 text-primary space-y-5">
+        <div className="rounded-xl bg-purple-700/10 p-5 text-purple-700  space-y-5">
           <div>
             <p>Experience</p>
             <h1 className="font-semibold text-lg">{experience}</h1>
@@ -142,7 +148,7 @@ const JobDetails = () => {
             <h1 className="font-semibold text-lg">{location}</h1>
           </div>
         </div>
-        <div className="mt-5 rounded-xl bg-primary/10 p-5 text-primary space-y-5">
+        <div className="mt-5 rounded-xl bg-purple-700/10 p-5 text-purple-700  space-y-5">
           <div>
             <h1 className="font-semibold text-lg">{companyName}</h1>
           </div>
@@ -156,16 +162,19 @@ const JobDetails = () => {
           </div>
           <div>
             <p>Email</p>
-            <h1 className="font-semibold text-lg">company.email@name.com</h1>
+            <h1 className="font-semibold text-lg">borhan@bohubrihi.com</h1>
           </div>
           <div>
             <p>Company Location</p>
-            <h1 className="font-semibold text-lg">Los Angeles</h1>
+            <h1 className="font-semibold text-lg">Badda, Dhaka</h1>
           </div>
           <div>
             <p>Website</p>
-            <a className="font-semibold text-lg" href="#">
-              https://website.com
+            <a
+              className="font-semibold text-lg"
+              href=" https://glowing-semifreddo-77c56f.netlify.app/"
+            >
+              https://borhanbd.com
             </a>
           </div>
         </div>
