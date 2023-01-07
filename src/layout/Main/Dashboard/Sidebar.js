@@ -2,9 +2,10 @@ import { BiHome, BiHomeAlt } from "react-icons/bi";
 import { BsDash } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
   const {
     user: { role },
   } = useSelector((state) => state.auth);
@@ -35,7 +36,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <ul className="flex flex-col gap-2 w-full h-full p-3">
-        <div className="flex justify-between items-center text-primary my-1">
+        <div className="flex justify-between items-center text-primary mt-[-20px]">
           <div className="flex items-center gap-1">
             <BiHome size={24} className="text-indigo-600 " />
             <h1 className="text-2xl text-indigo-600 font-bold ">Dashboard</h1>
@@ -43,7 +44,13 @@ const Sidebar = () => {
         </div>
         {role === "employer" &&
           employerRoutes.map(({ name, path }) => (
-            <li>
+            <li
+              className={`${
+                pathname === "/dashboard"
+                  ? "text-white font-bold bg-blue-600 rounded-full"
+                  : ""
+              }`}
+            >
               <Link
                 className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
                 to={path}
@@ -54,7 +61,13 @@ const Sidebar = () => {
           ))}
         {role === "employer" &&
           appliedJobs.map(({ name, path }) => (
-            <li>
+            <li
+              className={`${
+                pathname === "/dashboard/applied-jobs"
+                  ? "text-white font-bold bg-blue-600 rounded-full"
+                  : ""
+              }`}
+            >
               <Link
                 className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
                 to={path}
@@ -63,7 +76,13 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-        <li>
+        <li
+          className={`${
+            pathname === "/dashboard/employer"
+              ? "text-white font-bold bg-blue-600 rounded-full"
+              : ""
+          }`}
+        >
           <Link
             className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
             to="employer"
@@ -72,7 +91,13 @@ const Sidebar = () => {
           </Link>
         </li>
         {candidateRoute.map(({ name, path }) => (
-          <li>
+          <li
+            className={`${
+              pathname === "/dashboard/candidate"
+                ? "text-white font-bold bg-blue-600 rounded-full"
+                : ""
+            }`}
+          >
             <Link
               className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
               to={path}

@@ -50,7 +50,7 @@ const EmployerRegistration = () => {
     console.log(data);
     postUser({ ...data, role: "employer" });
     reset();
-    navigate("/dashboard");
+    navigate("/");
   };
   return (
     <div className="pt-14">
@@ -173,7 +173,7 @@ const EmployerRegistration = () => {
           </div>
 
           <div className="flex justify-between items-center w-full mt-3">
-            <div className="flex  w-full max-w-xs">
+            <div className="flex items-center w-full max-w-xs text-blue-600 font-bold">
               <input
                 className="mr-3"
                 type="checkbox"
@@ -185,8 +185,13 @@ const EmployerRegistration = () => {
               </label>
             </div>
             <button
+              title={`${term ? "" : "Click the agree button"}`}
               disabled={!term}
-              className="btn border border-b-sky-500 px-2 py-1 bg-slate-500 text-white"
+              className={`btn border-2  px-2 py-1 ${
+                term
+                  ? "border-2 border-sky-600 bg-blue-600 text-white font-bold rounded-sm"
+                  : "cursor-not-allowed"
+              }`}
               type="submit"
             >
               Submit

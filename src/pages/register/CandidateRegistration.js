@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useRegisterMutation } from "../../features/auth/authApi";
 
 const CandidateRegistration = () => {
   const [countries, setCountries] = useState([]);
-  const { handleSubmit, register, control } = useForm();
+  const [postUser, { isLoading, isError }] = useRegisterMutation();
+  const {
+    user: { email },
+  } = useSelector((state) => state.auth);
+  const { handleSubmit, register, control } = useForm({
+    defaultValues: { email },
+  });
   const term = useWatch({ control, name: "term" });
   console.log(term);
   const navigate = useNavigate();
@@ -18,6 +26,9 @@ const CandidateRegistration = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    postUser({ ...data, role: "candidate" });
+    // reset();
+    navigate("/");
   };
   return (
     <div className="pt-14">
@@ -123,18 +134,27 @@ const CandidateRegistration = () => {
           </div>
 
           <div className="flex justify-between items-center w-full mt-3">
-            <div className="flex  w-full max-w-xs">
+            <div className="flex items-center w-full max-w-xs text-blue-600 font-bold">
               <input
-                className="mr-3"
+                className="mr-3 "
                 type="checkbox"
                 {...register("term")}
                 id="terms"
               />
-              <label for="terms" className="cursor-pointer">
+              <label for="terms" className="cursor-pointer ">
                 I agree to terms and conditions
               </label>
             </div>
-            <button disabled={!term} className="btn" type="submit">
+            <button
+              title={`${term ? "" : "Click the agree button"}`}
+              disabled={!term}
+              className={`btn border-2  px-2 py-1 ${
+                term
+                  ? "border-2 border-sky-600 bg-blue-600 text-white font-bold rounded-sm"
+                  : "cursor-not-allowed"
+              }`}
+              type="submit"
+            >
               Submit
             </button>
           </div>
