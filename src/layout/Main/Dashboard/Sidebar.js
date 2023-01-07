@@ -12,7 +12,7 @@ const Sidebar = () => {
   const employerRoutes = [
     {
       name: "Add Job",
-      path: "",
+      path: "add-job",
     },
   ];
   const candidateRoute = [
@@ -42,11 +42,42 @@ const Sidebar = () => {
             <h1 className="text-2xl text-indigo-600 font-bold ">Dashboard</h1>
           </div>
         </div>
+
+        <li
+          className={`${
+            pathname === "/dashboard"
+              ? "text-white font-bold bg-blue-600 rounded-full"
+              : ""
+          }`}
+        >
+          <Link
+            className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
+            to="/dashboard"
+          >
+            EmployerDashboard
+          </Link>
+        </li>
+        {candidateRoute.map(({ name, path }) => (
+          <li
+            className={`${
+              pathname === "/dashboard/candidate"
+                ? "text-white font-bold bg-blue-600 rounded-full"
+                : ""
+            }`}
+          >
+            <Link
+              className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
+              to={path}
+            >
+              {name}
+            </Link>
+          </li>
+        ))}
         {role === "employer" &&
           employerRoutes.map(({ name, path }) => (
             <li
               className={`${
-                pathname === "/dashboard"
+                pathname === "/dashboard/add-job"
                   ? "text-white font-bold bg-blue-600 rounded-full"
                   : ""
               }`}
@@ -76,36 +107,6 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-        <li
-          className={`${
-            pathname === "/dashboard/employer"
-              ? "text-white font-bold bg-blue-600 rounded-full"
-              : ""
-          }`}
-        >
-          <Link
-            className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
-            to="employer"
-          >
-            EmployerDashboard
-          </Link>
-        </li>
-        {candidateRoute.map(({ name, path }) => (
-          <li
-            className={`${
-              pathname === "/dashboard/candidate"
-                ? "text-white font-bold bg-blue-600 rounded-full"
-                : ""
-            }`}
-          >
-            <Link
-              className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
-              to={path}
-            >
-              {name}
-            </Link>
-          </li>
-        ))}
       </ul>
     </div>
   );

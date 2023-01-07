@@ -25,7 +25,7 @@ const Navbar = () => {
       }`}
     >
       <ul className="max-w-7xl mx-auto flex gap-3 h-full items-center">
-        <li className="flex-auto font-semibold text-2xl">
+        <li className="flex-auto font-semibold text-3xl text-indigo-500 ">
           <Link to="/">JobBox</Link>
         </li>
         <li>

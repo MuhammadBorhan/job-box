@@ -65,7 +65,7 @@ const routes = createBrowserRouter([
     ),
     children: [
       {
-        index: true,
+        path: "add-job",
         element: <AddJob />,
       },
       {
@@ -73,7 +73,8 @@ const routes = createBrowserRouter([
         element: <AppliedJobs />,
       },
       {
-        path: "employer",
+        // path: "employer",
+        index: true,
         element: <EmployerDashboard />,
       },
       {

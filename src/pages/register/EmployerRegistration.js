@@ -56,7 +56,7 @@ const EmployerRegistration = () => {
     <div className="pt-14">
       <div
         onClick={() => navigate("/register")}
-        className="cursor-pointer w-fit mt-5 flex items-center fixed"
+        className="cursor-pointer w-fit mt-5 flex items-center fixed text-red-500 font-bold text-xl"
       >
         <FaChevronLeft />
         <p>back</p>
