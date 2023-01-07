@@ -65,7 +65,7 @@ const routes = createBrowserRouter([
     ),
     children: [
       {
-        path: "add-job",
+        index: true,
         element: <AddJob />,
       },
       {

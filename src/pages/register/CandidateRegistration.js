@@ -23,7 +23,7 @@ const CandidateRegistration = () => {
     <div className="pt-14">
       <div
         onClick={() => navigate("/register")}
-        className="cursor-pointer w-fit mt-5 flex items-center"
+        className="cursor-pointer w-fit mt-5 flex items-center fixed"
       >
         <FaChevronLeft />
         <p>back</p>
@@ -130,7 +130,9 @@ const CandidateRegistration = () => {
                 {...register("term")}
                 id="terms"
               />
-              <label for="terms">I agree to terms and conditions</label>
+              <label for="terms" className="cursor-pointer">
+                I agree to terms and conditions
+              </label>
             </div>
             <button disabled={!term} className="btn" type="submit">
               Submit

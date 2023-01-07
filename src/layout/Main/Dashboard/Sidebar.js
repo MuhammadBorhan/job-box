@@ -1,3 +1,5 @@
+import { BiHome, BiHomeAlt } from "react-icons/bi";
+import { BsDash } from "react-icons/bs";
 import { FaChevronLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,7 +11,7 @@ const Sidebar = () => {
   const employerRoutes = [
     {
       name: "Add Job",
-      path: "add-job",
+      path: "",
     },
   ];
   const candidateRoute = [
@@ -26,13 +28,18 @@ const Sidebar = () => {
   ];
   return (
     <div className="bg-purple-700/10 col-span-2 h-screen sticky top-0">
-      <ul className="flex flex-col gap-2 w-full h-full  p-3">
+      <div className="m-4">
+        <Link to="/" className="flex items-center">
+          <FaChevronLeft className="text-red-600" />
+          <h1 className="font-bold text-red-600">Back</h1>
+        </Link>
+      </div>
+      <ul className="flex flex-col gap-2 w-full h-full p-3">
         <div className="flex justify-between items-center text-primary my-1">
-          <Link to="/" className="flex items-center">
-            <FaChevronLeft />
-            <h1>Back</h1>
-          </Link>
-          <h1 className="text-xl">Dashboard</h1>
+          <div className="flex items-center gap-1">
+            <BiHome size={24} className="text-indigo-600 " />
+            <h1 className="text-2xl text-indigo-600 font-bold ">Dashboard</h1>
+          </div>
         </div>
         {role === "employer" &&
           employerRoutes.map(({ name, path }) => (

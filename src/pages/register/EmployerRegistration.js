@@ -56,7 +56,7 @@ const EmployerRegistration = () => {
     <div className="pt-14">
       <div
         onClick={() => navigate("/register")}
-        className="cursor-pointer w-fit mt-5 flex items-center"
+        className="cursor-pointer w-fit mt-5 flex items-center fixed"
       >
         <FaChevronLeft />
         <p>back</p>
@@ -66,7 +66,7 @@ const EmployerRegistration = () => {
           className="bg-secondary/20 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <h1 className="w-full text-2xl text-primary mb-5">Candidate</h1>
+          <h1 className="w-full text-2xl text-primary mb-5">Employer</h1>
           <div className="flex flex-col w-full max-w-xs">
             <label className="mb-2" htmlFor="firstName">
               First Name
@@ -180,7 +180,9 @@ const EmployerRegistration = () => {
                 {...register("term")}
                 id="terms"
               />
-              <label for="terms">I agree to terms and conditions</label>
+              <label for="terms" className="cursor-pointer">
+                I agree to terms and conditions
+              </label>
             </div>
             <button
               disabled={!term}
