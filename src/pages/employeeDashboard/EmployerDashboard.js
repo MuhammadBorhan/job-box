@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
+import { useGetUsersQuery } from "../../features/auth/authApi";
 
 const EmployerDashboard = () => {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/users")
+  //     .then((res) => res.json())
+  //     .then((data) => setUsers(data?.data));
+  // }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data?.data));
-  }, []);
+  const { data, isLoading } = useGetUsersQuery();
+  const users = data?.data;
 
-  const employer = users.filter((user) => user.role === "employer");
-  const candidate = users.filter((user) => user.role === "candidate");
+  const employer = users?.filter((user) => user.role === "employer");
   return (
     <div className="grid md:grid-cols-2 gap-5 mt-5 p-4">
       {employer?.map((user) => {
-        console.log(user);
-        const { firstName, lastName, email, gender, roleInCompany } = user;
+        const { firstName, lastName, email, gender, roleInCompany, _id } = user;
         return (
-          <div className="border border-gray-300 shadow-xl p-5 rounded-2xl">
+          <div
+            key={_id}
+            className="border border-gray-200 shadow-xl p-5 rounded-2xl"
+          >
             <div className="flex justify-between">
               <div>
                 <p className="text-xl">
