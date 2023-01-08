@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useApplyMutation,
-  useGetAppliedJobsQuery,
   useGetJobByIdQuery,
   useQuestionMutation,
   useReplyMutation,
 } from "../features/job/jobApi";
-import borhan from "../assets/hero-01.jpg";
+// import borhan from "../assets/hero-01.jpg";
+import reactDev from "../assets/reactDev.webp";
+import frontDev from "../assets/frontDev.webp";
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -78,6 +79,7 @@ const JobDetails = () => {
     const data = {
       reply,
       userId: id,
+      jobId: _id,
     };
     sendReply(data);
   };
@@ -86,7 +88,11 @@ const JobDetails = () => {
     <div className="pt-14 grid grid-cols-12 gap-5">
       <div className="col-span-9 mb-10">
         <div className="h-96 rounded-xl overflow-hidden">
-          <img className=" w-full object-cover" src={borhan} alt="" />
+          <img
+            className=" w-full object-cover"
+            src={position === "React Developer" ? reactDev : frontDev}
+            alt=""
+          />
         </div>
         <div className="space-y-5">
           <div className="flex justify-between items-center mt-5">

@@ -32,18 +32,6 @@ const Navbar = () => {
           <Link to="/jobs">Jobs</Link>
         </li>
 
-        {email ? (
-          <button
-            onClick={handleSignOut}
-            className="border border-b-white text-red-500 bg-yellow-300 font-bold px-2 py-1 rounded-full   hover:bg-yellow-400 hover:text-red-500 transition-all"
-          >
-            Logout
-          </button>
-        ) : (
-          <li className="border border-b-white text-white bg-blue-600 font-bold px-2 py-1 rounded-full hover:outline-none hover:border-none hover:bg-blue-800 hover:text-white transition-all">
-            <Link to="/login">Login</Link>
-          </li>
-        )}
         {email && role && (
           <li>
             <Link
@@ -62,6 +50,19 @@ const Navbar = () => {
             >
               Get Started
             </Link>
+          </li>
+        )}
+
+        {email ? (
+          <button
+            onClick={handleSignOut}
+            className="border border-b-white text-red-500 bg-yellow-300 font-bold px-2 py-1 rounded-full   hover:bg-yellow-400 hover:text-red-500 transition-all"
+          >
+            Logout
+          </button>
+        ) : (
+          <li className="border border-b-white text-white bg-blue-600 font-bold px-2 py-1 rounded-full hover:outline-none hover:border-none hover:bg-blue-800 hover:text-white transition-all">
+            <Link to="/login">Login</Link>
           </li>
         )}
 
