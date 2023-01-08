@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useApplyMutation,
+  useGetAppliedJobsQuery,
   useGetJobByIdQuery,
   useQuestionMutation,
   useReplyMutation,
@@ -20,6 +21,9 @@ const JobDetails = () => {
   const { data, isLoading, isError } = useGetJobByIdQuery(id, {
     pollingInterval: 1000,
   });
+
+  // const { data } = useGetAppliedJobsQuery(user.email);
+  // console.log("userId is", data?.data);
   const navigate = useNavigate();
   const {
     queries,
@@ -56,6 +60,7 @@ const JobDetails = () => {
       jobId: _id,
     };
     apply(data);
+    toast.success("Apply successfully done..");
   };
 
   const handleQuestion = (data) => {
@@ -88,6 +93,7 @@ const JobDetails = () => {
             <h1 className="text-xl font-semibold text-purple-700">
               {position}
             </h1>
+
             <button
               onClick={handleApply}
               className="btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2"

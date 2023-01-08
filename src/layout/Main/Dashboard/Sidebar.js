@@ -90,7 +90,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-        {role === "employer" &&
+        {role === "candidate" &&
           appliedJobs.map(({ name, path }) => (
             <li
               className={`${

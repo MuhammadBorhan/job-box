@@ -7,7 +7,7 @@ import { logout } from "../../features/auth/authSlice";
 const Navbar = () => {
   const { pathname } = useLocation();
   const {
-    user: { email, role },
+    user: { email, role, firstName },
   } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,30 +28,26 @@ const Navbar = () => {
         <li className="flex-auto font-semibold text-3xl text-indigo-500 ">
           <Link to="/">JobBox</Link>
         </li>
-        <li>
-          <Link className="hover:text-purple-700 font-black" to="/jobs">
-            Jobs
-          </Link>
+        <li className="border border-b-white text-white bg-blue-600 font-bold px-2 py-1 rounded-full hover:outline-none hover:border-none hover:bg-blue-800 hover:text-white transition-all">
+          <Link to="/jobs">Jobs</Link>
         </li>
 
         {email ? (
-          <button onClick={handleSignOut} className="text-purple-700 font-bold">
+          <button
+            onClick={handleSignOut}
+            className="border border-b-white text-red-500 bg-yellow-300 font-bold px-2 py-1 rounded-full   hover:bg-yellow-400 hover:text-red-500 transition-all"
+          >
             Logout
           </button>
         ) : (
-          <li>
-            <Link
-              className="border border-black px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 hover:px-4 transition-all "
-              to="/login"
-            >
-              Login
-            </Link>
+          <li className="border border-b-white text-white bg-blue-600 font-bold px-2 py-1 rounded-full hover:outline-none hover:border-none hover:bg-blue-800 hover:text-white transition-all">
+            <Link to="/login">Login</Link>
           </li>
         )}
         {email && role && (
           <li>
             <Link
-              className="border border-b-sky-600 text-indigo-500 font-bold px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 hover:px-4 transition-all "
+              className="border border-b-sky-600 text-indigo-500 font-bold px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 transition-all "
               to="/dashboard"
             >
               Dashboard
@@ -61,11 +57,29 @@ const Navbar = () => {
         {email && !role && (
           <li>
             <Link
-              className="border border-b-sky-600 text-indigo-500 font-bold px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 hover:px-4 transition-all "
+              className="border border-b-sky-600 text-indigo-500 font-bold px-2 py-1 rounded-full hover:border-primary hover:outline-none hover:border-none hover:text-white hover:bg-indigo-500 transition-all "
               to="/register"
             >
               Get Started
             </Link>
+          </li>
+        )}
+
+        {role === "employer" ? (
+          <li className="px-2 py-1 bg-blue-600 text-white font-bold rounded-full">
+            Employer
+          </li>
+        ) : role === "candidate" ? (
+          <li className="px-2 py-1 bg-blue-600 text-white font-bold rounded-full">
+            Candidate
+          </li>
+        ) : (
+          ""
+        )}
+
+        {email && !role && (
+          <li className="px-2 py-1 bg-blue-600 text-white font-bold rounded-full">
+            New User
           </li>
         )}
       </ul>

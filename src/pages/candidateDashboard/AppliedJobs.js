@@ -7,7 +7,10 @@ const AppliedJobs = () => {
   const {
     user: { email },
   } = useSelector((state) => state.auth);
+  console.log(email);
+  // const email = "0317371981@student.wub.edu.bd";
   const { data, isLoading } = useGetAppliedJobsQuery(email);
+  console.log(data);
 
   if (isLoading) {
     return <Loading />;
