@@ -15,8 +15,8 @@ const Landing = () => {
     "MERN Stack",
     "Team Lead",
     "Administration",
-    "SQA",
-    "Tester",
+    "SEO ",
+    "Instructor",
   ];
 
   const el = useRef();
@@ -123,10 +123,15 @@ const Landing = () => {
               </button>
             </div>
             <div className="mt-16">
-              <h2 className="badge-container">Popular Search</h2>
+              <h2 className="badge-container text-indigo-600 font-bold">
+                Popular Search
+              </h2>
               <div className="mt-3 max-w-xl flex flex-wrap  gap-3">
                 {keywords.map((item) => (
-                  <Badge key={item} className="badge bg-purple-400">
+                  <Badge
+                    key={item}
+                    className="badge bg-purple-600 font-bold text-white"
+                  >
                     {item}
                   </Badge>
                 ))}

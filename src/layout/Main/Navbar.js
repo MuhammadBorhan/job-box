@@ -67,7 +67,7 @@ const Navbar = () => {
         )}
 
         {role === "employer" ? (
-          <li className="px-2 py-1 bg-blue-600 text-white font-bold rounded-full">
+          <li className="px-2 py-1 border border-b-purple-600  text-black font-bold rounded-full">
             Employer
           </li>
         ) : role === "candidate" ? (

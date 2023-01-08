@@ -17,7 +17,7 @@ const Sidebar = () => {
   ];
   const candidateRoute = [
     {
-      name: "CandidateDashboard",
+      name: "Candidate",
       path: "candidate",
     },
   ];
@@ -35,9 +35,9 @@ const Sidebar = () => {
           <h1 className="font-bold text-red-600">Back</h1>
         </Link>
       </div>
-      <ul className="flex flex-col gap-2 w-full h-full p-3">
+      <ul className="flex flex-col gap-2 w-full h-full p-3 text-center">
         <div className="flex justify-between items-center text-primary mt-[-20px]">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 mx-auto">
             <BiHome size={24} className="text-indigo-600 " />
             <h1 className="text-2xl text-indigo-600 font-bold ">Dashboard</h1>
           </div>
@@ -54,7 +54,7 @@ const Sidebar = () => {
             className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
             to="/dashboard"
           >
-            EmployerDashboard
+            Employer
           </Link>
         </li>
         {candidateRoute.map(({ name, path }) => (
