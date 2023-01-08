@@ -6,9 +6,10 @@ import {
   useQuestionMutation,
   useReplyMutation,
 } from "../features/job/jobApi";
-// import borhan from "../assets/hero-01.jpg";
+import borhan from "../assets/hero-01.jpg";
 import reactDev from "../assets/reactDev.webp";
 import frontDev from "../assets/frontDev.webp";
+import backEnd from "../assets/nodeDev.jpg";
 import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -90,7 +91,15 @@ const JobDetails = () => {
         <div className="h-96 rounded-xl overflow-hidden">
           <img
             className=" w-full object-cover"
-            src={position === "React Developer" ? reactDev : frontDev}
+            src={
+              position === "React Developer"
+                ? reactDev
+                : position === "Frontend Developer"
+                ? frontDev
+                : position === "Backend Developer"
+                ? backEnd
+                : borhan
+            }
             alt=""
           />
         </div>
