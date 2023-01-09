@@ -24,7 +24,7 @@ const EmployerDashboard = () => {
             className="border border-gray-200 shadow-xl p-5 rounded-2xl"
           >
             <div className="flex justify-between">
-              <div>
+              <div className="text-purple-600">
                 <p className="text-xl">
                   <span className="font-bold">Name: </span>
                   {firstName} {lastName}

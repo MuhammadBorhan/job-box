@@ -80,7 +80,7 @@ const Navbar = () => {
 
         {email && !role && (
           <li className="px-2 py-1 bg-blue-600 text-white font-bold rounded-full">
-            New User
+            User
           </li>
         )}
       </ul>

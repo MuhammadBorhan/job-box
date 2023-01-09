@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useApplyMutation,
@@ -14,21 +14,21 @@ import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import Loading from "../components/Loading";
 
 const JobDetails = () => {
   const [reply, setReply] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
   const { id } = useParams();
-  const { data, isLoading, isError } = useGetJobByIdQuery(id, {
+  const { data, isLoading } = useGetJobByIdQuery(id, {
     pollingInterval: 1000,
   });
 
-  // const { data } = useGetAppliedJobsQuery(user.email);
-  // console.log("userId is", data?.data);
   const navigate = useNavigate();
   const {
     queries,
+    applicants,
     position,
     overview,
     skills,
@@ -56,6 +56,7 @@ const JobDetails = () => {
       navigate("/register");
       return;
     }
+
     const data = {
       userId: user._id,
       email: user.email,
@@ -111,9 +112,16 @@ const JobDetails = () => {
 
             <button
               onClick={handleApply}
-              className="btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2"
+              className={`btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2 `}
             >
-              Apply
+              {user.role === "employer" ? (
+                <h1>You can't apply because you are employer</h1>
+              ) : user.role === "candidate" &&
+                applicants[0]?.id === user._id ? (
+                <h1>Already Applied</h1>
+              ) : (
+                <h1>Apply</h1>
+              )}
             </button>
           </div>
           <div>

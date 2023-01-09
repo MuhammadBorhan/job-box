@@ -15,7 +15,6 @@ const CandidateRegistration = () => {
     defaultValues: { email },
   });
   const term = useWatch({ control, name: "term" });
-  console.log(term);
   const navigate = useNavigate();
 
   useEffect(() => {
