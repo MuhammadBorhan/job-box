@@ -117,7 +117,7 @@ const JobDetails = () => {
               {user.role === "employer" ? (
                 <h1>You can't apply because you are employer</h1>
               ) : user.role === "candidate" &&
-                applicants[0]?.id === user._id ? (
+                applicants?.find((item) => item.id === user._id) ? (
                 <h1>Already Applied</h1>
               ) : (
                 <h1>Apply</h1>
