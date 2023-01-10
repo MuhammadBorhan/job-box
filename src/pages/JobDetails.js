@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useApplyMutation,
   useGetJobByIdQuery,
+  useNewDataMutation,
   useQuestionMutation,
   useReplyMutation,
 } from "../features/job/jobApi";
@@ -46,6 +47,7 @@ const JobDetails = () => {
   } = data?.data || {};
 
   const [apply] = useApplyMutation();
+  const [newData] = useNewDataMutation();
   const [sendQuestion] = useQuestionMutation();
   const [sendReply] = useReplyMutation();
 
@@ -65,6 +67,7 @@ const JobDetails = () => {
       jobId: _id,
     };
     apply(data);
+    newData({ ...data, fixed: "find" });
     toast.success("Apply successfully done..");
   };
 
@@ -111,19 +114,7 @@ const JobDetails = () => {
             <h1 className="text-xl font-semibold text-purple-700">
               {position}
             </h1>
-            {/* <button
-              onClick={handleApply}
-              className={`btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2 `}
-            >
-              {user.role === "employer" ? (
-                <h1>You can't apply because you are employer</h1>
-              ) : user.role === "candidate" &&
-                applicants?.find((item) => item.id === user._id) ? (
-                <h1>Already Applied</h1>
-              ) : (
-                <h1>Apply</h1>
-              )}
-            </button> */}
+
             {/* <Modal /> */}
             <div>
               {/* The button to open modal */}
