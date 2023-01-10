@@ -47,8 +47,8 @@ const Landing = () => {
           duration: 0.5,
           ease: "power2",
         })
-        .from(".badge-container", { opacity: 0 })
-        .from(".badge", { opacity: 0, y: 50, stagger: 0.1 });
+        .from(".badge-containers", { opacity: 0 })
+        .from(".badges", { opacity: 0, y: 50, stagger: 0.1 });
     }, el);
 
     const movement = (e) => {
@@ -117,20 +117,20 @@ const Landing = () => {
               />
               <button
                 id="search-button"
-                className="p-2 rounded-full bg-primary  h-14 w-14 grid place-items-center"
+                className="p-2 rounded-full bg-primary  h-10 w-10 grid place-items-center"
               >
-                <BiSearchAlt size="28" color="blue" />
+                <BiSearchAlt size="28" color="white" />
               </button>
             </div>
             <div className="mt-16">
-              <h2 className="badge-container text-indigo-600 font-bold">
+              <h2 className="badge-containers text-indigo-600 font-bold">
                 Popular Search
               </h2>
               <div className="mt-3 max-w-xl flex flex-wrap  gap-3">
                 {keywords.map((item) => (
                   <Badge
                     key={item}
-                    className="badge bg-purple-600 font-bold text-white"
+                    className="badges bg-purple-600 font-bold text-white"
                   >
                     {item}
                   </Badge>

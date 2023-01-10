@@ -12,6 +12,7 @@ import AccountCreator from "../pages/register/AccountCreator";
 import Signup from "../pages/Signup";
 import PrivateRoute from "../utils/PrivateRoute";
 import AppliedJobs from "../pages/candidateDashboard/AppliedJobs";
+import AppliedCandidate from "../pages/candidateDashboard/AppliedCandidate";
 
 const routes = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const routes = createBrowserRouter([
       {
         path: "candidate",
         element: <CandidateDashboard />,
+      },
+      {
+        path: "applied-candidate",
+        element: <AppliedCandidate />,
       },
     ],
   },

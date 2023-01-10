@@ -15,8 +15,10 @@ import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import Loading from "../components/Loading";
+import Modal from "../components/Modal";
 
 const JobDetails = () => {
+  const [openModal, setOpenModal] = useState(false);
   const [reply, setReply] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
@@ -109,8 +111,7 @@ const JobDetails = () => {
             <h1 className="text-xl font-semibold text-purple-700">
               {position}
             </h1>
-
-            <button
+            {/* <button
               onClick={handleApply}
               className={`btn px-2 hover:bg-purple-700 hover:text-white  py-1 rounded-full text-purple-700 font-bold border-purple-500 border-2 `}
             >
@@ -122,7 +123,42 @@ const JobDetails = () => {
               ) : (
                 <h1>Apply</h1>
               )}
-            </button>
+            </button> */}
+            {/* <Modal /> */}
+            <div>
+              {/* The button to open modal */}
+              <label
+                htmlFor="my-modal-6"
+                className="border-2 border-purple-600 px-2 py-1 rounded-full font-bold hover:bg-purple-600 hover:text-white text-purple-600 cursor-pointer transition-all"
+              >
+                Easy Apply
+              </label>
+              {/* Put this part before </body> tag */}
+              <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+              <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box relative">
+                  <label
+                    htmlFor="my-modal-6"
+                    className="text-red-600 font-bold px-2 py-1 rounded-full border-red-600 border-2 cursor-pointer absolute right-2 top-2 bg"
+                  >
+                    Cancel
+                  </label>
+                  <button
+                    onClick={handleApply}
+                    className="border-2 border-purple-600 px-2 py-1 rounded-full font-bold hover:bg-purple-600 hover:text-white text-purple-600 cursor-pointer transition-all"
+                  >
+                    {user.role === "employer" ? (
+                      <h1>You can't apply because you are an employer</h1>
+                    ) : user.role === "candidate" &&
+                      applicants?.find((item) => item.id === user._id) ? (
+                      <h1>Already Applied</h1>
+                    ) : (
+                      <h1>Apply</h1>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <div>
             <h1 className="text-purple-700 text-lg font-medium mb-3">

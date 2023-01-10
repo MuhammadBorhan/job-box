@@ -1,10 +1,14 @@
-# Getting Started with Create React App and Redux
+# Job-Box Application for searching job easily
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Description
 
-## Available Scripts
+I feel much better now than I was scared at the begining of this assignment. this assignment was not difficult but it was tricky. Alhamdulillah I was able to do it even then.
 
-In the project directory, you can run:
+## Features and functionality.
+
+\*only six items for car parts in Home page and All parts in Manage All products route.
+
+\*Create Register route for new user and login route for already user.
 
 ### `npm start`
 

@@ -107,6 +107,22 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+        {role === "employer" && (
+          <li
+            className={`${
+              pathname === "/dashboard/applied-candidate"
+                ? "text-white font-bold bg-blue-600 rounded-full"
+                : ""
+            }`}
+          >
+            <Link
+              className="hover:bg-purple-700 hover:text-white bg-purple-700/20 transition-all w-full block py-2 px-3 rounded-full"
+              to="applied-candidate"
+            >
+              Applied Candidate
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );
