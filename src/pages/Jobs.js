@@ -4,8 +4,7 @@ import JobCard from "../components/JobCard";
 import { useGetJobsQuery } from "../features/job/jobApi";
 
 const Jobs = () => {
-  const navigate = useNavigate();
-  const { data, isLoading, isError } = useGetJobsQuery();
+  const { data } = useGetJobsQuery();
   return (
     <div className="pt-14">
       <div className="bg-purple-700/10 p-5 rounded-2xl">

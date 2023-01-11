@@ -7,7 +7,7 @@ import { useRegisterMutation } from "../../features/auth/authApi";
 
 const CandidateRegistration = () => {
   const [countries, setCountries] = useState([]);
-  const [postUser, { isLoading, isError }] = useRegisterMutation();
+  const [postUser] = useRegisterMutation();
   const {
     user: { email },
   } = useSelector((state) => state.auth);

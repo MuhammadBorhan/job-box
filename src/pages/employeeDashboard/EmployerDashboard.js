@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
+import React from "react";
 import { useGetUsersQuery } from "../../features/auth/authApi";
 
 const EmployerDashboard = () => {
-  // const [users, setUsers] = useState([]);
-  // useEffect(() => {
-  //   fetch("http://localhost:4000/users")
-  //     .then((res) => res.json())
-  //     .then((data) => setUsers(data?.data));
-  // }, []);
-
-  const { data, isLoading } = useGetUsersQuery();
+  const { data } = useGetUsersQuery();
   const users = data?.data;
 
   const employer = users?.filter((user) => user.role === "employer");
