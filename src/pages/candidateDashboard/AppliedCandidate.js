@@ -1,16 +1,23 @@
 import React from "react";
-import { useGetJobsQuery } from "../../features/job/jobApi";
+import { useGetNewDataQuery } from "../../features/job/jobApi";
 
 const AppliedCandidate = () => {
-  const { data } = useGetJobsQuery();
-  const allData = data?.data?.map((applicants) => applicants);
-  const applicants = allData?.map((item) => item.applicants);
+  const { data } = useGetNewDataQuery();
+  console.log(data.data);
   return (
     <div>
-      {applicants?.map((item) => {
-        const email = item?.find((data) => data);
-        return <div>{email.email}</div>;
-      })}
+      <div>
+        {data?.data?.map((item) => {
+          const { name, jobName, email } = item;
+          return (
+            <div>
+              <h3>Name: {name}</h3>
+              <p>Email: {email}</p>
+              <p>Job-name: {jobName}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

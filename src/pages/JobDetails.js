@@ -15,16 +15,13 @@ import { BsArrowRightShort, BsArrowReturnRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import Loading from "../components/Loading";
-import Modal from "../components/Modal";
 
 const JobDetails = () => {
-  const [openModal, setOpenModal] = useState(false);
   const [reply, setReply] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
   const { id } = useParams();
-  const { data, isLoading } = useGetJobByIdQuery(id, {
+  const { data } = useGetJobByIdQuery(id, {
     pollingInterval: 1000,
   });
 
@@ -67,7 +64,12 @@ const JobDetails = () => {
       jobId: _id,
     };
     apply(data);
-    newData({ ...data, fixed: "find" });
+    newData({
+      ...data,
+      resuem: "resume",
+      jobName: position,
+      name: user.firstName + "" + user.lastName,
+    });
     toast.success("Apply successfully done..");
   };
 
