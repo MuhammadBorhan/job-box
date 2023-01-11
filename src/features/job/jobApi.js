@@ -10,16 +10,16 @@ const jobApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["jobs"],
     }),
-    newData: builder.mutation({
+    postApply: builder.mutation({
       query: (data) => ({
-        url: "/newData",
+        url: "/postApply",
         method: "POST",
         body: data,
       }),
     }),
-    getNewData: builder.query({
+    getAllApply: builder.query({
       query: () => ({
-        url: "/AllNewData",
+        url: "/getAllApply",
       }),
     }),
     apply: builder.mutation({
@@ -75,6 +75,6 @@ export const {
   useGetAppliedJobsQuery,
   useQuestionMutation,
   useReplyMutation,
-  useNewDataMutation,
-  useGetNewDataQuery,
+  usePostApplyMutation,
+  useGetAllApplyQuery,
 } = jobApi;

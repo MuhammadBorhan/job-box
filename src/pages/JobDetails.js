@@ -4,6 +4,7 @@ import {
   useApplyMutation,
   useGetJobByIdQuery,
   useNewDataMutation,
+  usePostApplyMutation,
   useQuestionMutation,
   useReplyMutation,
 } from "../features/job/jobApi";
@@ -17,6 +18,7 @@ import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 
 const JobDetails = () => {
+  const [resume, setResume] = useState("");
   const [reply, setReply] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
@@ -44,7 +46,7 @@ const JobDetails = () => {
   } = data?.data || {};
 
   const [apply] = useApplyMutation();
-  const [newData] = useNewDataMutation();
+  const [postApply] = usePostApplyMutation();
   const [sendQuestion] = useQuestionMutation();
   const [sendReply] = useReplyMutation();
 
@@ -64,11 +66,11 @@ const JobDetails = () => {
       jobId: _id,
     };
     apply(data);
-    newData({
+    postApply({
       ...data,
-      resuem: "resume",
       jobName: position,
-      name: user.firstName + "" + user.lastName,
+      resume: resume,
+      name: user.firstName + " " + user.lastName,
     });
     toast.success("Apply successfully done..");
   };
@@ -136,19 +138,33 @@ const JobDetails = () => {
                   >
                     Cancel
                   </label>
-                  <button
-                    onClick={handleApply}
-                    className="border-2 border-purple-600 px-2 py-1 rounded-full font-bold hover:bg-purple-600 hover:text-white text-purple-600 cursor-pointer transition-all"
-                  >
-                    {user.role === "employer" ? (
-                      <h1>You can't apply because you are an employer</h1>
-                    ) : user.role === "candidate" &&
-                      applicants?.find((item) => item.id === user._id) ? (
-                      <h1>Already Applied</h1>
-                    ) : (
-                      <h1>Apply</h1>
-                    )}
-                  </button>
+                  <div>
+                    <div className="my-8">
+                      <h1 className="font-bold text-indigo-600 mb-2 font-serif">
+                        Add your resume link here: ( must be google drive viewer
+                        link)
+                      </h1>
+                      <input
+                        type="text"
+                        onChange={(e) => setResume(e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
+                    <button
+                      disabled={!resume}
+                      onClick={handleApply}
+                      className="border-2 border-purple-600 px-2 py-1 rounded-full font-bold hover:bg-purple-600 hover:text-white text-purple-600 cursor-pointer transition-all"
+                    >
+                      {user.role === "employer" ? (
+                        <h1>You can't apply because you are an employer</h1>
+                      ) : user.role === "candidate" &&
+                        applicants?.find((item) => item.id === user._id) ? (
+                        <h1>Already Applied</h1>
+                      ) : (
+                        <h1>Apply</h1>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
