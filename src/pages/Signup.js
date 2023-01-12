@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { FaGoogle } from "react-icons/fa";
+import { BsEye } from "react-icons/bs";
+import { FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/login.svg";
 import { createUser, googleLogin } from "../features/auth/authSlice";
 
 const Signup = () => {
+  const [toggle, setToggle] = useState(false);
   const { handleSubmit, register, reset, control } = useForm();
   const password = useWatch({ control, name: "password" });
   const confirmPassword = useWatch({ control, name: "confirmPassword" });
@@ -50,10 +52,10 @@ const Signup = () => {
   };
   return (
     <div className="flex h-screen items-center pt-14">
-      <div className="w-1/2">
+      <div className="w-1/2 hidden lg:block">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
-      <div className="w-1/2 grid place-items-center">
+      <div className="w-1/2 mx-auto grid place-items-center">
         <div className="bg-[#FFFAF4] rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Sign up</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,21 +77,33 @@ const Signup = () => {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={toggle ? "text" : "password"}
                   name="password"
                   id="password"
                   {...register("password")}
                 />
+                <span
+                  onClick={() => setToggle(!toggle)}
+                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                >
+                  {toggle ? <BsEye /> : <FaEyeSlash />}
+                </span>
               </div>
               <div className="flex flex-col items-start">
                 <label htmlFor="confirm-password" className="ml-5">
                   Confirm Password
                 </label>
                 <input
-                  type="password"
+                  type={toggle ? "text" : "password"}
                   id="confirm-password"
                   {...register("confirmPassword")}
                 />
+                <span
+                  onClick={() => setToggle(!toggle)}
+                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                >
+                  {toggle ? <BsEye /> : <FaEyeSlash />}
+                </span>
               </div>
               <div className="!mt-8 ">
                 <button

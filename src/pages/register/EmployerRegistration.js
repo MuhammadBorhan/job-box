@@ -54,7 +54,7 @@ const EmployerRegistration = () => {
         <FaChevronLeft />
         <p>back</p>
       </div>
-      <div className="flex justify-center items-center overflow-auto p-10">
+      <div className="flex justify-center items-center overflow-auto p-10 mt-10 lg:mt-0">
         <form
           className="bg-secondary/20 shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 max-w-3xl justify-between"
           onSubmit={handleSubmit(onSubmit)}

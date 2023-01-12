@@ -1,6 +1,5 @@
 import React from "react";
 import { toast } from "react-hot-toast";
-import JobCard from "../../components/JobCard";
 import {
   useGetJobsQuery,
   useRemoveJobsMutation,

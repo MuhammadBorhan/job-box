@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import loginImage from "../assets/login.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { googleLogin, loginUser } from "../features/auth/authSlice";
-import { useEffect } from "react";
-import { FaGoogle, FaGooglePlusG } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import { BsEye } from "react-icons/bs";
 
 const Login = () => {
+  const [toggle, setToggle] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,10 +38,10 @@ const Login = () => {
   }, [isError, error]);
   return (
     <div className="flex h-screen items-center">
-      <div className="w-1/2">
+      <div className="w-1/2 hidden lg:block">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
-      <div className="w-1/2 grid place-items-center">
+      <div className="w-1/2 mx-auto grid place-items-center">
         <div className="bg-[#FFFAF4] rounded-lg grid place-items-center p-10">
           <h1 className="mb-10 font-medium text-2xl">Login</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -50,15 +52,21 @@ const Login = () => {
                 </label>
                 <input type="email" {...register("email")} id="email" />
               </div>
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start show-input">
                 <label htmlFor="password" className="ml-5">
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={toggle ? "text" : "password"}
                   id="password"
                   {...register("password")}
                 />
+                <span
+                  onClick={() => setToggle(!toggle)}
+                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                >
+                  {toggle ? <BsEye /> : <FaEyeSlash />}
+                </span>
               </div>
               <div className="relative !mt-8">
                 <button

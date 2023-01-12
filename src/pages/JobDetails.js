@@ -96,7 +96,7 @@ const JobDetails = () => {
   };
 
   return (
-    <div className="pt-14 grid grid-cols-12 gap-5">
+    <div className="pt-20 grid grid-cols-1 lg:grid-cols-12 gap-5 px-5 lg:px-0">
       <div className="col-span-9 mb-10">
         <div className="h-96 rounded-xl overflow-hidden">
           <img
@@ -130,7 +130,7 @@ const JobDetails = () => {
               </label>
               {/* Put this part before </body> tag */}
               <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-              <div className="modal modal-bottom sm:modal-middle">
+              <div className="modal modal-bottom sm:modal-middle px-2">
                 <div className="modal-box relative">
                   <label
                     htmlFor="my-modal-6"

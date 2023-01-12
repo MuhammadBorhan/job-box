@@ -75,7 +75,7 @@ const Landing = () => {
 
   return (
     <div ref={el} className="h-screen">
-      <div className="max-w-2xl h-[80vh] rounded-b-full overflow-hidden absolute top-0 left-1/2 -translate-x-1/2  z-0">
+      <div className="max-w-2xl mt-20 h-[40vh] md:h-[60vh] lg:h-[80vh] rounded-b-full overflow-hidden absolute top-0 left-1/2 -translate-x-1/2  z-0">
         <img
           id="hero1"
           src={hero1}
@@ -95,10 +95,14 @@ const Landing = () => {
           className="object-cover h-full w-full opacity-0"
         />
       </div>
-      <div className="h-full w-full flex items-center z-10 relative">
+      {/* <div className="h-full w-full flex items-center z-10 relative"> */}
+      <div className="h-full w-full flex flex-col lg:flex-row items-center z-10 relative">
         <div className="flex w-full">
           <div className="w-1/2 flex flex-col items-start">
-            <h1 id="hero-title" className="heroElement font-bold text-7xl">
+            <h1
+              id="hero-title"
+              className="heroElement font-bold mt-20 lg:mt-0 text-3xl md:text-5xl lg:text-7xl "
+            >
               Find the perfect <br /> job for you
             </h1>
             <p id="hero-subtitle" className="mt-5 text-lg">
@@ -106,10 +110,10 @@ const Landing = () => {
             </p>
             <div
               id="search-container"
-              className="bg-white rounded-full p-3 flex w-full max-w-xl overflow-hidden mt-5  shadow-lg"
+              className="bg-transparent lg:bg-white rounded-full p-3 flex w-full max-w-xl overflow-hidden mt-5  shadow-lg"
             >
               <input
-                className="flex-auto text-lg p-2 border-none outline-none focus:ring-0"
+                className="flex-auto hidden lg:block text-lg p-2 border-none outline-none focus:ring-0"
                 type="text"
                 name="search"
                 id="search"
@@ -117,12 +121,12 @@ const Landing = () => {
               />
               <button
                 id="search-button"
-                className="p-2 rounded-full bg-primary  h-10 w-10 grid place-items-center"
+                className="p-2 hidden lg:block rounded-full  bg-primary  h-10 w-10 grid place-items-center"
               >
                 <BiSearchAlt size="28" color="white" />
               </button>
             </div>
-            <div className="mt-16">
+            <div className="mt-16 w-96 lg:w-full relative left-20 lg:left-0">
               <h2 className="badge-containers text-indigo-600 font-bold">
                 Popular Search
               </h2>
@@ -139,7 +143,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between ">
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
+            <div className="statCard hidden lg:block rounded-3xl shadow-2xl p-7 bg-white relative left-[80%]">
               <div>
                 <span className="text-2xl font-bold">319 </span>
                 <span>Job offers</span>
@@ -148,7 +152,7 @@ const Landing = () => {
                 In Business Development
               </p>
             </div>
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[60%]">
+            <div className="statCard hidden lg:block rounded-3xl shadow-2xl p-7 bg-white relative left-[60%]">
               <div>
                 <span className="text-2xl font-bold">265 </span>
                 <span>Job offers</span>
@@ -157,7 +161,7 @@ const Landing = () => {
                 In Marketing & Communication
               </p>
             </div>
-            <div className="statCard rounded-3xl shadow-2xl p-7 bg-white relative left-[40%]">
+            <div className="statCard hidden lg:block rounded-3xl shadow-2xl p-7 bg-white relative left-[40%]">
               <div>
                 <span className="text-2xl font-bold">324 </span>
                 <span>Job offers</span>

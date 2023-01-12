@@ -15,7 +15,7 @@ const AppliedJobs = () => {
   return (
     <div className="pl-5">
       <h1 className="text-xl py-5 text-purple-700 font-bold">Applied jobs</h1>
-      <div className="grid grid-cols-2 gap-5 pb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 pb-5 px-4">
         {data?.data?.map((job) => (
           <JobCard key={job._id} jobData={job} />
         ))}

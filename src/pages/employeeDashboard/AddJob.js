@@ -1,5 +1,6 @@
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { FiTrash } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -33,6 +34,7 @@ const AddJob = () => {
   const onSubmit = (data) => {
     postJob({ ...data, applicants: [], queries: [] });
     reset();
+    toast.success("Successfully Added...");
     // navigate("/jobs");
   };
   return (

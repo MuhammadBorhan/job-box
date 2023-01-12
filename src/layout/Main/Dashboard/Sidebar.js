@@ -28,7 +28,7 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="bg-purple-700/10 col-span-2 h-screen sticky top-0">
+    <div className="bg-purple-700/10 col-span-2 lg:h-screen lg:sticky lg:top-0">
       <div className="m-4">
         <Link to="/" className="flex items-center">
           <FaChevronLeft className="text-red-600" />

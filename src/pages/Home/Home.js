@@ -1,7 +1,11 @@
 import Landing from "./Landing";
 
 const Home = () => {
-  return <Landing />;
+  return (
+    <div className="">
+      <Landing />
+    </div>
+  );
 };
 
 export default Home;
