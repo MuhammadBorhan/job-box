@@ -9,7 +9,10 @@ import loginImage from "../assets/login.svg";
 import { createUser, googleLogin } from "../features/auth/authSlice";
 
 const Signup = () => {
-  const [toggle, setToggle] = useState(false);
+  const [show, setShow] = useState({
+    password: false,
+    confirmPassword: false,
+  });
   const { handleSubmit, register, reset, control } = useForm();
   const password = useWatch({ control, name: "password" });
   const confirmPassword = useWatch({ control, name: "confirmPassword" });
@@ -77,16 +80,17 @@ const Signup = () => {
                   Password
                 </label>
                 <input
-                  type={toggle ? "text" : "password"}
+                  type={`${show.password ? "text" : "password"}`}
                   name="password"
                   id="password"
                   {...register("password")}
                 />
                 <span
-                  onClick={() => setToggle(!toggle)}
+                  onClick={() => setShow({ ...show, password: !show.password })}
                   className="cursor-pointer relative left-[185px] bottom-[30px]"
                 >
-                  {toggle ? <BsEye /> : <FaEyeSlash />}
+                  {show.password ? <BsEye /> : <FaEyeSlash />}
+                  {/* <BsEye /> */}
                 </span>
               </div>
               <div className="flex flex-col items-start">
@@ -94,15 +98,20 @@ const Signup = () => {
                   Confirm Password
                 </label>
                 <input
-                  type={toggle ? "text" : "password"}
+                  type={show.confirmPassword ? "text" : "password"}
                   id="confirm-password"
                   {...register("confirmPassword")}
                 />
                 <span
-                  onClick={() => setToggle(!toggle)}
+                  onClick={() =>
+                    setShow({
+                      ...show,
+                      confirmPassword: !show.confirmPassword,
+                    })
+                  }
                   className="cursor-pointer relative left-[185px] bottom-[30px]"
                 >
-                  {toggle ? <BsEye /> : <FaEyeSlash />}
+                  {show.confirmPassword ? <BsEye /> : <FaEyeSlash />}
                 </span>
               </div>
               <div className="!mt-8 ">
