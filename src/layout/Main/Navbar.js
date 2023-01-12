@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const menuItems = (
     <>
-      <li className=" text-white bg-blue-600 px-4 font-bold rounded-full hover:bg-blue-800 hover:text-white transition-all mr-2">
+      <li className=" text-white bg-blue-600 px-4 font-bold rounded-full hover:bg-blue-800 hover:text-white transition-all lg:mr-2">
         <Link to="/jobs">Jobs</Link>
       </li>
       {email && role && (
@@ -43,7 +43,7 @@ const Navbar = () => {
           Logout
         </button>
       ) : (
-        <li className=" text-white bg-blue-600 font-bold px-4 rounded-full hover:bg-blue-800 hover:text-white transition-all">
+        <li className=" text-white my-2 lg:my-0 bg-blue-600 font-bold px-4 rounded-full hover:bg-blue-800 hover:text-white transition-all">
           <Link to="/login">Login</Link>
         </li>
       )}

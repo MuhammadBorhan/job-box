@@ -63,7 +63,7 @@ const Login = () => {
                 />
                 <span
                   onClick={() => setToggle(!toggle)}
-                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                  className="cursor-pointer relative left-[180px] bottom-[30px]"
                 >
                   {toggle ? <BsEye /> : <FaEyeSlash />}
                 </span>

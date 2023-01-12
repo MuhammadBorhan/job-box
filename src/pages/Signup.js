@@ -87,7 +87,7 @@ const Signup = () => {
                 />
                 <span
                   onClick={() => setShow({ ...show, password: !show.password })}
-                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                  className="cursor-pointer relative left-[180px] bottom-[30px]"
                 >
                   {show.password ? <BsEye /> : <FaEyeSlash />}
                   {/* <BsEye /> */}
@@ -109,7 +109,7 @@ const Signup = () => {
                       confirmPassword: !show.confirmPassword,
                     })
                   }
-                  className="cursor-pointer relative left-[185px] bottom-[30px]"
+                  className="cursor-pointer relative left-[180px] bottom-[30px]"
                 >
                   {show.confirmPassword ? <BsEye /> : <FaEyeSlash />}
                 </span>

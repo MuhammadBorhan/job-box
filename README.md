@@ -1,14 +1,14 @@
-# Job-Box Application for searching job easily
+# JobBox Web Application to get or give jobs easily
 
 # Description
 
-I feel much better now than I was scared at the begining of this assignment. this assignment was not difficult but it was tricky. Alhamdulillah I was able to do it even then.
+Usually when we finish our graduation then we are thinking about how we can get a good job and where to get it. With these thoughts I made this job search web application where students can easily get or give jobs.
+
+Live Site Link: https://beamish-figolla-a3c5b4.netlify.app/
 
 ## Features and functionality.
 
-\*only six items for car parts in Home page and All parts in Manage All products route.
-
-\*Create Register route for new user and login route for already user.
+- This is fullstack web application
 
 ### `npm start`
 

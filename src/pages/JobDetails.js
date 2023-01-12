@@ -270,7 +270,7 @@ const JobDetails = () => {
         </div>
       </div>
       <div className="col-span-3">
-        <div className="rounded-xl bg-purple-700/10 p-5 text-purple-700  space-y-5">
+        <div className="rounded-xl bg-purple-700/10 p-5 w-96 lg:w-full text-purple-700  space-y-5">
           <div>
             <p>Experience</p>
             <h1 className="font-semibold text-lg">{experience}</h1>
@@ -292,7 +292,7 @@ const JobDetails = () => {
             <h1 className="font-semibold text-lg">{location}</h1>
           </div>
         </div>
-        <div className="mt-5 rounded-xl bg-purple-700/10 p-5 text-purple-700  space-y-5">
+        <div className="mt-5 rounded-xl w-96 lg:w-full bg-purple-700/10 p-5 text-purple-700  space-y-5">
           <div>
             <h1 className="font-semibold text-lg">{companyName}</h1>
           </div>
