@@ -3,11 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 const JobCard = ({ jobData }) => {
   const navigate = useNavigate();
-  const { _id, position, companyName, location, employmentType } =
+  const { _id, position, companyName, location, employmentType, date } =
     jobData || {};
   return (
     <div className="border border-gray-300 shadow-xl p-5 rounded-2xl text-purple-700">
-      <div className="flex justify-between  text-purple-700">
+      <div className="flex justify-between text-purple-700">
         <div>
           <p className="text-xl">{position}</p>
           <small className="text-purple-700/70 font-bold">
@@ -18,6 +18,7 @@ const JobCard = ({ jobData }) => {
           </small>
         </div>
         <p>{location}</p>
+        <p>{date ? date : "Few days ago"}</p>
       </div>
       <div className="flex justify-between items-center mt-5">
         <p>{employmentType}</p>

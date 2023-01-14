@@ -32,7 +32,18 @@ const AddJob = () => {
   } = useFieldArray({ control, name: "requirements" });
 
   const onSubmit = (data) => {
-    postJob({ ...data, applicants: [], queries: [] });
+    postJob({
+      ...data,
+      date:
+        new Date().getDate() +
+        "/" +
+        new Date().getMonth() +
+        1 +
+        "/" +
+        new Date().getFullYear(),
+      applicants: [],
+      queries: [],
+    });
     reset();
     toast.success("Successfully Added...");
     // navigate("/jobs");

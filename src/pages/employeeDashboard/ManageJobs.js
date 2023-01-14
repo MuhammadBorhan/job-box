@@ -17,7 +17,7 @@ const ManageJobs = () => {
     <div className="p-4">
       <div className="grid md:grid-cols-2 gap-5 mt-5">
         {data?.data?.map((job) => {
-          const { _id, position, companyName, location, employmentType } =
+          const { _id, position, companyName, location, employmentType, date } =
             job || {};
           return (
             <div className="border border-gray-300 shadow-xl p-5 rounded-2xl text-purple-700">
@@ -32,6 +32,7 @@ const ManageJobs = () => {
                   </small>
                 </div>
                 <p>{location}</p>
+                <p>{date ? date : "Few days ago"}</p>
               </div>
               <div className="flex justify-between items-center mt-5">
                 <p>{employmentType}</p>

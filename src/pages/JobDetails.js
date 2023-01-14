@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 
 const JobDetails = () => {
   const [resume, setResume] = useState("");
+  const [letter, setLetter] = useState("");
   const [reply, setReply] = useState("");
   const { user } = useSelector((state) => state.auth);
   const { register, handleSubmit, reset } = useForm();
@@ -70,6 +71,7 @@ const JobDetails = () => {
       ...data,
       jobName: position,
       resume: resume,
+      letter: letter,
       name: user.firstName + " " + user.lastName,
     });
     toast.success("Apply successfully done..");
@@ -139,6 +141,20 @@ const JobDetails = () => {
                     Cancel
                   </label>
                   <div>
+                    <div>
+                      <h1 className="text-xl font-bold my-2 text-indigo-600">
+                        Cover letter
+                      </h1>
+                      <p className="font-bold mb-2 text-indigo-500">
+                        Why should you be hired for this role?
+                      </p>
+                      <textarea
+                        className="w-full"
+                        rows={4}
+                        onChange={(e) => setLetter(e.target.value)}
+                      />
+                    </div>
+
                     <div className="my-8">
                       <h1 className="font-bold text-indigo-600 mb-2 font-serif">
                         Add your resume link here: ( must be google drive viewer
